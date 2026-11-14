@@ -1,0 +1,13 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Vista previa de WhatsApp/Facebook con datos en vivo para casas nuevas (ver README).
+[[edge_functions]]
+  path = "/propiedades/*"
+  function = "og"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

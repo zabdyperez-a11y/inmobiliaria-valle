@@ -1,0 +1,70 @@
+@import '@fontsource-variable/manrope';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+  }
+  @media (min-width: 1024px) {
+    html { font-size: 17px; }
+  }
+  body {
+    @apply bg-white font-sans text-ink antialiased;
+    line-height: 1.55;
+    font-weight: 400;
+  }
+  h1, h2, h3, h4 {
+    @apply font-bold text-teal-900;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+  a { @apply text-teal-900 underline underline-offset-2; }
+  :focus-visible {
+    outline: 3px solid #2A8790;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  /* Evita que el texto de iOS haga zoom al tocar un campo. */
+  input, select, textarea { font-size: 1rem; }
+}
+
+@layer components {
+  .wrap { @apply mx-auto w-full max-w-content px-4 sm:px-6; }
+  .btn {
+    @apply inline-flex min-h-btn items-center justify-center gap-2 rounded-btn px-5 text-base font-semibold no-underline transition-colors;
+  }
+  .btn-primary { @apply btn bg-teal-900 text-white hover:bg-teal-700; }
+  .btn-outline { @apply btn border-2 border-teal-900 bg-white text-teal-900 hover:bg-teal-50; }
+  .btn-wa { @apply btn bg-wa text-white hover:bg-wa-hover; }
+  .btn-ghost { @apply btn text-teal-900 hover:bg-teal-50; }
+  .card { @apply rounded-card border border-line bg-white; }
+  .price { @apply font-bold text-teal-500; font-variant-numeric: tabular-nums; }
+  .label { @apply mb-1.5 block text-sm font-semibold text-ink; }
+  .field {
+    @apply block min-h-btn w-full rounded-btn border border-line bg-white px-3.5 py-2.5 text-ink placeholder:text-muted;
+  }
+  .field:focus { @apply border-teal-500 outline-none; box-shadow: 0 0 0 3px #EAF3F4; }
+  .field[aria-invalid='true'] { @apply border-status-hold; }
+  .eyebrow { @apply text-sm font-semibold text-muted; }
+  .chip {
+    @apply inline-flex min-h-tap items-center rounded-full border border-line bg-white px-4 text-sm font-medium text-ink;
+  }
+  .chip[aria-pressed='true'], .chip[aria-checked='true'] { @apply border-teal-500 bg-teal-50 text-teal-900; }
+}
+
+@layer utilities {
+  .tabular { font-variant-numeric: tabular-nums; }
+  .no-scrollbar { scrollbar-width: none; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .fade-in { animation: fade .35s ease-out both; }
+  @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+  @media (prefers-reduced-motion: reduce) {
+    .fade-in { animation: none; }
+    * { scroll-behavior: auto !important; }
+  }
+}
